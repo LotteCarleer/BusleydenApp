@@ -20,6 +20,7 @@ const categoryNames = {
 const HomeScreen = ({ navigation }) => {
   const [products, setProducts] = useState([]);
   const [blogs, setBlogs] = useState([]);
+  const [campussen, setCampussen] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
   const [sortOption, setSortOption] = useState("price-asc");
@@ -96,6 +97,33 @@ const HomeScreen = ({ navigation }) => {
       .catch((error) => console.error("Error fetching blogs:", error));
   }, []); 
 
+//campussen
+    useEffect(() => {
+    fetch(
+      "https://api.webflow.com/v2/collections/6a0cd5672da739c98ccffe1d/items",
+      {
+        headers: {
+          authorization:
+            "Bearer 962b44ba8ef347478b6ee583c7a4498889ad64d06687d89b5d1ab2a0cd0f212a",
+        },
+      },
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        setCampussen(
+          data.items.map((item) => ({
+            id: item.id,
+            title: item.fieldData.name,
+            subtitle: item.fieldData["post-summary"],
+            content: item.fieldData["post-body"],
+            image: { uri: item.fieldData["main-image"]?.url },
+          })),
+        );
+      })
+      .catch((error) => console.error("Error fetching blogs:", error));
+  }, []); 
+
+
   return (
     <ScrollView style={styles.container} contentContainerStyle={styles.content}>
       <Text style={styles.title}>Producten</Text>
@@ -169,8 +197,25 @@ const HomeScreen = ({ navigation }) => {
             />
           ))}
           
+
+
         </>
+
       )}
+
+      <Text style={styles.title}>Campussen</Text>
+
+{campussen.map((campus) => (
+  <BlogCard
+    key={campus.id}
+    title={campus.title}
+    description={campus.subtitle}
+    image={campus.image}
+    onPress={() => navigation.navigate("CampusDetail", campus)}
+  />
+))}
+
+      
 
       
 
