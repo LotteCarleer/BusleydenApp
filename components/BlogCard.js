@@ -20,7 +20,7 @@ const BlogCard = ({ title, description, image, onPress }) => {
 const styles = StyleSheet.create({
   card: {
     width: 250,
-    padding: 16,
+    
     backgroundColor: "#fff",
     borderRadius: 20,
     marginBottom: 16,
@@ -29,27 +29,36 @@ const styles = StyleSheet.create({
   image: {
     width: "100%",
     height: 200,
-    borderRadius: 9,
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
   },
   title: {
     fontSize: 24,
     fontWeight: "bold",
     marginTop: 8,
+    marginLeft: 10,
+    marginRight: 10,
     marginBottom: 4,
   },
   description: {
     fontSize: 14,
     color: "#000",
     marginTop: 4,
+    marginLeft: 10,
+    marginRight: 10,
     marginBottom: 7,
   },
   button: {
   marginTop: 10,
+  marginLeft: 10,
+  marginRight: 10,
+  marginBottom: 10,
   },
   buttonText: {
   color: "#7aaa25",
   fontSize: 16,
   fontWeight: "700",
+  
   
 },
 });
