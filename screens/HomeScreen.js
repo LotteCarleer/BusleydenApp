@@ -6,7 +6,7 @@ import BlogCard from "../components/BlogCard.js";
 import CampusCard from "../components/CampusCard.js";
 import { Picker } from "@react-native-picker/picker";
 
-const categoryNames = {
+const categoryNamesProducts = {
   "": "Alle categoriën",
   "6a0b727b3654afcf3d03cf4d": "Kleding",
   "6a0b728a29b5d29cf15f96b0": "Baby",
@@ -15,6 +15,13 @@ const categoryNames = {
   "6a0b731399dbcda1ccb21d6b": "Onderweg",
  
 };
+
+const categoryNamesBlogs = {
+ "": "Alle categoriën",
+ "6a0cc0442b7ecd8bf3a91db0": "Activiteit",
+ "6a0cc056b16912be5dc757f6": "Infrastructuur",
+ "6a0cc0788981edb69a3ed956": "Evenement",
+}
 
 //Test
 
@@ -25,6 +32,8 @@ const HomeScreen = ({ navigation }) => {
   const [selectedCategory, setSelectedCategory] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
   const [sortOption, setSortOption] = useState("price-asc");
+  const [selectedBlogCategory, setSelectedBlogCategory] = useState("");
+const [blogSortOption, setBlogSortOption] = useState("name-asc");
 
   const [showBlogs, setShowBlogs] = useState(true);
 
@@ -50,7 +59,7 @@ const HomeScreen = ({ navigation }) => {
             price: (item.skus[0]?.fieldData.price.value || 0) / 100,
             image: { uri: item.skus[0]?.fieldData["main-image"]?.url },
             category:
-              categoryNames[item.product.fieldData.category[0]] ||
+              categoryNamesProducts[item.product.fieldData.category[0]] ||
               "Onbekende categorie",
           })),
         );
@@ -71,6 +80,29 @@ const HomeScreen = ({ navigation }) => {
     if (sortOption === "name-desc") return b.title.localeCompare(a.title);
     return 0;
   });
+
+  const filteredBlogs = blogs.filter(
+  (blog) =>
+    blog.title.toLowerCase().includes(searchQuery.toLowerCase()) &&
+    (selectedBlogCategory === "" ||
+      blog.category === selectedBlogCategory)
+);
+
+const sortedBlogs = [...filteredBlogs].sort((a, b) => {
+  if (blogSortOption === "name-asc") {
+    return a.title.localeCompare(b.title);
+  }
+
+  if (blogSortOption === "name-desc") {
+    return b.title.localeCompare(a.title);
+  }
+
+  return 0;
+});
+
+const filteredCampussen = campussen.filter((campus) =>
+  campus.title.toLowerCase().includes(searchQuery.toLowerCase())
+);
   
   //blogs
   useEffect(() => {
@@ -87,11 +119,17 @@ const HomeScreen = ({ navigation }) => {
       .then((data) => {
         setBlogs(
           data.items.map((item) => ({
+              
+            
             id: item.id,
             title: item.fieldData.name,
             subtitle: item.fieldData["post-summary"],
             content: item.fieldData["post-body"],
             image: { uri: item.fieldData["main-image"]?.url },
+
+            category:
+            categoryNamesBlogs[item.fieldData.categorien?.[0]] ||
+            "Onbekende categorie",
           })),
         );
       })
@@ -182,31 +220,49 @@ const HomeScreen = ({ navigation }) => {
         />
       ))}
 
-      
-    {showBlogs && (
-        <>
-          <Text style={styles.title}>Blogs</Text>
-          
-           
-          {blogs.map((blog) => (
-            <BlogCard
-              key={blog.id}
-              title={blog.title}
-              description={blog.subtitle}
-              image={blog.image}
-              onPress={() => navigation.navigate("BlogDetail", blog)}
-            />
-          ))}
-          
+      {showBlogs && (
+  <>
+    <Text style={styles.title}>Blogs</Text>
 
+    <View style={styles.pickerContainer}>
+      <Picker
+        selectedValue={selectedBlogCategory}
+        onValueChange={setSelectedBlogCategory}
+        style={styles.picker}
+      >
+        <Picker.Item label="Alle categorieën" value="" />
+        <Picker.Item label="Activiteit" value="Activiteit" />
+        <Picker.Item label="Infrastructuur" value="Infrastructuur" />
+        <Picker.Item label="Evenement" value="Evenement" />
+      </Picker>
+    </View>
 
-        </>
+    <View style={styles.pickerContainer}>
+      <Picker
+        selectedValue={blogSortOption}
+        onValueChange={setBlogSortOption}
+        style={styles.picker}
+      >
+        <Picker.Item label="Naam A-Z" value="name-asc" />
+        <Picker.Item label="Naam Z-A" value="name-desc" />
+      </Picker>
+    </View>
 
-      )}
+    {sortedBlogs.map((blog) => (
+      <BlogCard
+        key={blog.id}
+        title={blog.title}
+        description={blog.subtitle}
+        image={blog.image}
+        onPress={() => navigation.navigate("BlogDetail", blog)}
+      />
+    ))}
+  </>
+)}
 
       <Text style={styles.title}>Campussen</Text>
 
-{campussen.map((campus) => (
+{filteredCampussen.map((campus) => (
   <CampusCard
     key={campus.id}
     title={campus.title}
