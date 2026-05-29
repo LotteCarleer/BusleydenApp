@@ -7,7 +7,7 @@ import {
 } from "react-native";
 
 
-const BlogDetail = ({ route }) => {
+const CampusDetail = ({ route }) => {
   const { title, subtitle, image, } = route.params;
 
   return (
@@ -60,4 +60,4 @@ const styles = StyleSheet.create({
  
 });
 
-export default BlogDetail;
+export default CampusDetail;
