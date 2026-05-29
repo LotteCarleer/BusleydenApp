@@ -22,36 +22,35 @@ const styles = StyleSheet.create({
     width: 250,
     padding: 16,
     backgroundColor: "#fff",
-    borderRadius: 8,
+    borderRadius: 20,
     marginBottom: 16,
+    boxShadow: "1px 4px 6px rgba(0, 0, 0, 0.3)",
   },
   image: {
     width: "100%",
     height: 200,
-    borderRadius: 8,
+    borderRadius: 9,
   },
   title: {
-    fontSize: 18,
+    fontSize: 24,
     fontWeight: "bold",
     marginTop: 8,
+    marginBottom: 4,
   },
   description: {
     fontSize: 14,
-    color: "#555",
+    color: "#000",
     marginTop: 4,
+    marginBottom: 7,
   },
   button: {
-    backgroundColor: "#651121",
-  paddingVertical: 12,
-  paddingHorizontal: 28,
-  borderRadius: 10,
   marginTop: 10,
   },
   buttonText: {
-  color: "#fff",
-  fontSize: 15,
-  fontWeight: "600",
-  textAlign: "center",
+  color: "#7aaa25",
+  fontSize: 16,
+  fontWeight: "700",
+  
 },
 });
 
