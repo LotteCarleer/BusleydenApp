@@ -73,11 +73,11 @@ const HomeScreen = ({ navigation }) => {
   //blogs
   useEffect(() => {
     fetch(
-      "https://api.webflow.com/v2/collections/699ef94b1b701b4e81bf1440/items",
+      "https://api.webflow.com/v2/collections/6a0caf25a89f5bb5d859bb78/items",
       {
         headers: {
           authorization:
-            "Bearer aec7e4f1f92eb60ba64318b7f59a7b93ba0be926331fab40bc205f4308ea0db9",
+            "Bearer 962b44ba8ef347478b6ee583c7a4498889ad64d06687d89b5d1ab2a0cd0f212a",
         },
       },
     )
