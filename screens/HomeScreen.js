@@ -206,7 +206,7 @@ const HomeScreen = ({ navigation }) => {
       <Text style={styles.title}>Campussen</Text>
 
 {campussen.map((campus) => (
-  <BlogCard
+  <CampusCard
     key={campus.id}
     title={campus.title}
     description={campus.subtitle}
