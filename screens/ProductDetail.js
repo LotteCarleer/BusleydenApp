@@ -58,7 +58,7 @@ const ProductDetail = ({ route }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#f4edda",
+    backgroundColor: "#f2f8e9",
   },
   content: {
     alignItems: "center",
@@ -68,12 +68,14 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: "bold",
     marginTop: 20,
+    color: "#7aaa25"
   },
   image: {
     width: 300,
     height: 300,
-    borderRadius: 8,
-    marginTop: 20,
+    borderRadius: 15,
+    marginTop: 40,
+    boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.3)",
   },
   subtitle: {
   textAlign:"center",
@@ -87,7 +89,7 @@ const styles = StyleSheet.create({
    fontSize: 20,
   },
   button: {
-    backgroundColor: "#651121",
+    backgroundColor: "#7aaa25",
     padding: 10,
     borderRadius: 5,
   },
@@ -119,6 +121,7 @@ totalBox: {
   padding: 20,
   borderRadius: 15,
   alignItems: "center",
+  boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.3)",
 },
 
 totalLabel: {
