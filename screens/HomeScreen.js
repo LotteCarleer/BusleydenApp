@@ -152,7 +152,8 @@ const HomeScreen = ({ navigation }) => {
     {showBlogs && (
         <>
           <Text style={styles.title}>Blogs</Text>
-
+          
+           
           {blogs.map((blog) => (
             <BlogCard
               key={blog.id}
@@ -162,6 +163,7 @@ const HomeScreen = ({ navigation }) => {
               onPress={() => navigation.navigate("BlogDetail", blog)}
             />
           ))}
+          
         </>
       )}
 
