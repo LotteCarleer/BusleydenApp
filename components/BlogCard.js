@@ -11,7 +11,7 @@ const BlogCard = ({ title, description, image, onPress }) => {
       <Text style={styles.description}>{description}</Text>
 
       <TouchableOpacity style={styles.button} onPress={onPress}>
-        <Text style={styles.buttonText}>Lees blog</Text>
+        <Text style={styles.buttonText}>Lees blog </Text>
       </TouchableOpacity>
     </View>
   );
