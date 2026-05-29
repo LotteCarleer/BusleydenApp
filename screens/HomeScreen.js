@@ -7,9 +7,11 @@ import { Picker } from "@react-native-picker/picker";
 
 const categoryNames = {
   "": "Alle categoriën",
-  "69a8aa7136d068f3089e6bdb": "ringen",
-  "69a8a29aa7f742163a2eff39": "Oorbellen",
-  "69a8a290ffb5f283afa41443": "Kettingen",
+  "6a0b727b3654afcf3d03cf4d": "Kleding",
+  "6a0b728a29b5d29cf15f96b0": "Baby",
+  "6a0b72c83c5d6661d2bf518b": "Lunchmateriaal",
+  "6a0b72daeafee951ced5f602": "gadgets",
+  "6a0b731399dbcda1ccb21d6b": "Onderweg",
  
 };
 
@@ -27,11 +29,11 @@ const HomeScreen = ({ navigation }) => {
 
   useEffect(() => {
     fetch(
-      "https://api.webflow.com/v2/sites/698c7fde9a932a1ff5c130a4/products", //API product list
+      "https://api.webflow.com/v2/sites/6a0b57adef4eb806ebc94d61/products", //API product list
       {
         headers: {
           Authorization:
-            "Bearer aec7e4f1f92eb60ba64318b7f59a7b93ba0be926331fab40bc205f4308ea0db9",
+            "Bearer 962b44ba8ef347478b6ee583c7a4498889ad64d06687d89b5d1ab2a0cd0f212a",
         },
       },
     )
@@ -116,10 +118,11 @@ const HomeScreen = ({ navigation }) => {
         style={styles.picker}
       >
         <Picker.Item label="Alle categorieën" value="" />
-        <Picker.Item label="ringen" value="ringen" />
-        <Picker.Item label="Oorbellen" value="Oorbellen" />
-        <Picker.Item label="Kettingen" value="Kettingen" />
-      
+        <Picker.Item label="Kleding" value="Kleding" />
+        <Picker.Item label="Baby" value="Baby" />
+        <Picker.Item label="Lunchmateriaal" value="Lunchmateriaal" />
+        <Picker.Item label="gadgets" value="gadgets" />
+        <Picker.Item label="Onderweg" value="Onderweg" />
       </Picker>
 
       <Picker
