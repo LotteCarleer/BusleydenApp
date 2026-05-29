@@ -39,6 +39,7 @@ const HomeScreen = ({ navigation }) => {
     )
       .then((res) => res.json())
       .then((data) => {
+        console.log(JSON.stringify(data.items[0], null, 2));
         setProducts(
           data.items.map((item) => ({
             id: item.product.id,

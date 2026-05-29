@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
     width: 250,
     padding: 16,
     backgroundColor: "#fff",
-    borderRadius: 8,
+    borderRadius: 10,
     marginBottom: 16,
   },
   image: {
