@@ -103,15 +103,17 @@ const HomeScreen = ({ navigation }) => {
       <TextInput
         style={styles.search}
         placeholder="Zoek een product..."
-        placeholderTextColor="#888"
+        placeholderTextColor="#79aa25c0"
         value={searchQuery}
         onChangeText={setSearchQuery}
       />
 
       <View style={styles.switchContainer}>
         <Text  style={styles.switchText}>Toon blogs</Text>
-       <Switch value={showBlogs} onValueChange={setShowBlogs} trackColor={{ false: "#ccc", true: "#651121" }} thumbColor={showBlogs ? "#fff" : "#f4f3f4"} />
+       <Switch value={showBlogs} onValueChange={setShowBlogs} trackColor={{ false: "#ccc", true: "#7aaa25" }} thumbColor={showBlogs ? "#fff" : "#f4f3f4"} />
       </View>
+
+      <View style={styles.pickerContainer}>
 
       <Picker
         selectedValue={selectedCategory}
@@ -125,7 +127,9 @@ const HomeScreen = ({ navigation }) => {
         <Picker.Item label="gadgets" value="gadgets" />
         <Picker.Item label="Onderweg" value="Onderweg" />
       </Picker>
+      </View>
 
+      <View style={styles.pickerContainer}>
       <Picker
         selectedValue={sortOption}
         onValueChange={setSortOption}
@@ -136,6 +140,7 @@ const HomeScreen = ({ navigation }) => {
         <Picker.Item label="Naam A-Z" value="name-asc" />
         <Picker.Item label="Naam Z-A" value="name-desc" />
       </Picker>
+      </View>
 
       {sortedProducts.map((product) => (
         <ProductCard
@@ -197,16 +202,27 @@ const styles = StyleSheet.create({
     padding: 12,
     borderRadius: 8,
     borderWidth: 1,
-    borderColor: "#ccc",
+    borderColor: "#7aaa25",
     fontSize: 16,
+  
   },
-  picker: {
-    width: "90%",
-    maxWidth: 400,
-    backgroundColor: "#fffdf8",
-    borderRadius: 12,
+  pickerContainer: {
+      width: "90%",
+  maxWidth: 400,
+  backgroundColor: "#7aaa25",
+  borderRadius: 15 ,
+  overflow: "hidden",
+  elevation: 5,
+  fontSize: 18,
+  },
+ 
 
+  picker: {
+       color: "#fff",
+       
   },
+
+  
   switchContainer: {
     flexDirection: "row",
     alignItems: "center",
@@ -216,8 +232,8 @@ const styles = StyleSheet.create({
     
   },
   switchText: {
-  fontSize: 18,      // 👈 groter maken (bijv. 18 of 20)
-  fontWeight: "600", // optioneel: iets dikker
+  fontSize: 18,      
+  fontWeight: "600", 
   color: "#222",
 },
 
