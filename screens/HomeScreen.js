@@ -3,6 +3,7 @@ import { ScrollView, StyleSheet, Text, TextInput, Switch, View, } from "react-na
 import { useState, useEffect } from "react";
 import ProductCard from "../components/ProductCard.js";
 import BlogCard from "../components/BlogCard.js";
+import CampusCard from "../components/CampusCard.js";
 import { Picker } from "@react-native-picker/picker";
 
 const categoryNames = {

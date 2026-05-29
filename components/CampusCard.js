@@ -11,7 +11,7 @@ const CampusCard = ({ title, description, image, onPress }) => {
       <Text style={styles.description}>{description}</Text>
 
       <TouchableOpacity style={styles.button} onPress={onPress}>
-        <Text style={styles.buttonText}>Lees blog </Text>
+        <Text style={styles.buttonText}>Bekijk campus </Text>
       </TouchableOpacity>
     </View>
   );
@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     marginRight: 10,
     marginBottom: 4,
-    color: "#7aaa25",
+    color: "#000",
   },
   description: {
     fontSize: 14,
