@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import { ScrollView, StyleSheet, Text, TextInput, Switch, View, } from "react-native";
+import { ScrollView, StyleSheet, Text, TextInput, Switch, View, TouchableOpacity,} from "react-native";
 import { useState, useEffect } from "react";
 import ProductCard from "../components/ProductCard.js";
 import BlogCard from "../components/BlogCard.js";
@@ -272,6 +272,13 @@ const filteredCampussen = campussen.filter((campus) =>
   />
 ))}
 
+<TouchableOpacity
+  style={styles.gameButton}
+  onPress={() => navigation.navigate("SchoolGame")}
+>
+  <Text style={styles.gameButtonText}>🎮 Speel de School Game</Text>
+</TouchableOpacity>
+
       
 
       
@@ -337,6 +344,20 @@ const styles = StyleSheet.create({
   fontSize: 18,      
   fontWeight: "600", 
   color: "#222",
+},
+gameButton: {
+  backgroundColor: "#7aaa25",
+  padding: 15,
+  borderRadius: 10,
+  marginTop: 20,
+  width: "90%",
+},
+
+gameButtonText: {
+  color: "white",
+  textAlign: "center",
+  fontWeight: "bold",
+  fontSize: 18,
 },
 
 });
