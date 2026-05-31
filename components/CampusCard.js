@@ -19,7 +19,7 @@ const CampusCard = ({ title, description, image, onPress }) => {
 
 const styles = StyleSheet.create({
   card: {
-    width: 250,
+    width: 350,
     
     backgroundColor: "#fff",
     borderRadius: 20,
@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
   },
   image: {
     width: "100%",
-    height: 200,
+    height: 250,
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
   },
