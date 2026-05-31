@@ -75,5 +75,64 @@ export default function SchoolGameScreen() {
 }
 
 const styles = StyleSheet.create({
+container: {
+    flex: 1,
+   
+    backgroundColor: "#f2f8e9",
+  },
+
+  title: {
+    textAlign: "center",
+    marginTop: 40,
+    fontSize: 28,
+    fontWeight: "bold",
+    marginBottom: 20,
+  },
+
+  info: {
+    textAlign: "center",
+    fontSize: 20,
+    marginBottom: 10,
+  },
+
+  book: {
+    marginTop: 120,
+    alignSelf: "center",
+  },
+
+  bookText: {
+    fontSize: 100,
+  },
+
+  gameOver: {
+    textAlign: "center",
+    fontSize: 26,
+    fontWeight: "bold",
+    marginTop: 100,
+  },
+
+  finalScore: {
+    textAlign: "center",
+    fontSize: 22,
+    marginTop: 15,
+  },
+
+  restartButton: {
+    justifyContent: "center",
+    alignSelf: "center",
+    marginTop: 25,
+    backgroundColor: "#7aaa25",
+    padding: 15,
+    maxWidth: 250,
+    borderRadius: 10,
+  },
+
+  restartText: {
+    textAlign: "center",
+    color: "white",
+    fontWeight: "bold",
+    fontSize: 18,
+  },
+
 
 });
