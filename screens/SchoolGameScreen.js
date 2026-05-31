@@ -169,7 +169,7 @@ container: {
   },
 
   bookText: {
-    fontSize: 100,
+    fontSize: 70,
   },
 
   gameOver: {
