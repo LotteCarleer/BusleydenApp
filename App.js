@@ -10,6 +10,7 @@ import ProductDetail from "./screens/ProductDetail";
 import BlogDetail from "./screens/BlogDetail";
 import CampusDetail from "./screens/CampusDetail";
 import SchoolGameScreen from "./screens/SchoolGameScreen";
+import CartScreen from "./screens/CartScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -80,6 +81,16 @@ export default function App() {
             title: "📚 School Game",
           }}
         />
+
+        <Stack.Screen
+  name="Cart"
+  component={CartScreen}
+  options={{
+    title: "🛒 Winkelmandje",
+  }}
+/>
+
+
       </Stack.Navigator>
     </NavigationContainer>
   );
