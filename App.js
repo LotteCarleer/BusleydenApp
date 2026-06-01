@@ -1,4 +1,5 @@
 import { StatusBar } from "expo-status-bar";
+import { useState } from "react";
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import ProductCard from "./components/ProductCard";
 import { NavigationContainer } from "@react-navigation/native";
@@ -15,6 +16,9 @@ import CartScreen from "./screens/CartScreen";
 const Stack = createNativeStackNavigator();
 
 export default function App() {
+const [cartItems, setCartItems] = useState([]);
+  
+
   return (
         <NavigationContainer>
       <Stack.Navigator
@@ -52,11 +56,17 @@ export default function App() {
 
         <Stack.Screen
           name="Details"
-          component={ProductDetail}
-          options={{
+           options={{
             title: "Product",
           }}
-        />
+        >
+          {(props) => (<ProductDetail 
+          {...props}
+           cartItems={cartItems} 
+           setCartItems={setCartItems}
+           />
+           )}
+        </Stack.Screen>
 
         <Stack.Screen
           name="BlogDetail"
@@ -82,13 +92,20 @@ export default function App() {
           }}
         />
 
-        <Stack.Screen
+   <Stack.Screen
   name="Cart"
-  component={CartScreen}
   options={{
     title: "🛒 Winkelmandje",
   }}
-/>
+>
+  {(props) => (
+    <CartScreen
+      {...props}
+      cartItems={cartItems}
+      setCartItems={setCartItems}
+    />
+  )}
+</Stack.Screen>
 
 
       </Stack.Navigator>

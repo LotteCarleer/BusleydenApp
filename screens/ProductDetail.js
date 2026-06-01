@@ -9,7 +9,7 @@ import {
 } from "react-native";
 import { useState } from "react";
 
-const ProductDetail = ({ route }) => {
+const ProductDetail = ({ route, cartItems, setCartItems, }) => {
   const { title, subtitle, price, image } = route.params;
   const [quantity, setQuantity] = useState(1);
 
@@ -20,6 +20,15 @@ const ProductDetail = ({ route }) => {
     if (quantity > 1) {
       setQuantity(quantity - 1);
     }
+  };
+
+  const addToCart = () => {
+    setCartItems([
+      ...cartItems, 
+      { title, price, quantity }
+    ]);
+
+    alert("Product toegevoegd aan winkelmandje!");
   };
 
   return (
@@ -49,6 +58,14 @@ const ProductDetail = ({ route }) => {
   <Text style={styles.totalLabel}>TOTAAL</Text>
   <Text style={styles.totalPrice}>€{(price * quantity).toFixed(2)}</Text>
 </View>
+
+      <TouchableOpacity
+      style={styles.cartButton}
+      onPress={addToCart}
+    >
+      <Text style={styles.cartButtonText}>
+        Toevoegen aan winkelmandje</Text>
+    </TouchableOpacity>
 
       <StatusBar style="auto" />
     </ScrollView>
@@ -118,7 +135,7 @@ const styles = StyleSheet.create({
 totalBox: {
   backgroundColor: "#fff",
   width: "85%",
-  padding: 20,
+  padding: 10,
   borderRadius: 15,
   alignItems: "center",
   boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.3)",
@@ -134,6 +151,22 @@ totalPrice: {
   fontSize: 18,
   fontWeight: "bold",
 },
+
+cartButton: {
+  backgroundColor: "#7aaa25",
+  padding: 15,
+  borderRadius: 10,
+  marginTop: 20,
+  marginBottom: 30,
+  
+},
+
+cartButtonText: {
+  color: "#fff",
+  fontSize: 16,
+  fontWeight: "bold",
+},
+
 });
 
 export default ProductDetail;
