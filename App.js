@@ -33,12 +33,12 @@ export default function App() {
         <Stack.Screen
           name="Home"
           component={HomeScreen}
-          options={{
+          options={({ navigation }) => ({
             title: "Busleyden App",
 
             headerRight: () => (
               <TouchableOpacity 
-              onPress={() => navigation.navigate("cart")}>
+              onPress={() => navigation.navigate("Cart")}>
                 <Ionicons
                   name="cart"
                   size={26}
@@ -46,7 +46,7 @@ export default function App() {
                 />
               </TouchableOpacity>
             )
-          }}
+          })}
         />
 
 
