@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import ProductCard from "./components/ProductCard";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
@@ -34,15 +34,20 @@ export default function App() {
           component={HomeScreen}
           options={{
             title: "Busleyden App",
+
             headerRight: () => (
-              <Ionicons
-                name="school"
-                size={26}
-                color="white"
-              />
-            ),
+              <TouchableOpacity 
+              onPress={() => navigation.navigate("cart")}>
+                <Ionicons
+                  name="cart"
+                  size={26}
+                  color="white"
+                />
+              </TouchableOpacity>
+            )
           }}
         />
+
 
         <Stack.Screen
           name="Details"
